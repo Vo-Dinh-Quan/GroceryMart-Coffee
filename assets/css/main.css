@@ -133,8 +133,16 @@ table {
   border-spacing: 0;
 }
 
-*, ::before, ::after {
+*,
+::before,
+::after {
   box-sizing: border-box;
+}
+
+:root {
+  --text-color: #1a162e;
+  --icon-color: brightness(0) saturate(100%) invert(8%) sepia(10%)
+      saturate(4042%) hue-rotate(212deg) brightness(90%) contrast(95%);
 }
 
 html {
@@ -144,6 +152,7 @@ html {
 body {
   font-size: 1.6rem;
   font-family: Gordita, sans-serif;
+  color: var(--text-color);
 }
 
 a {
@@ -155,6 +164,18 @@ button {
   border: none;
   outline: none;
   background: transparent;
+}
+
+button,
+input,
+textarea,
+select {
+  font-family: inherit;
+  color: inherit;
+}
+
+.icon {
+  filter: var(--icon-color);
 }
 
 .col, .row > *, .container-fluid, .container {
@@ -183,204 +204,6 @@ button {
 
 .col {
   flex: 1 0;
-}
-
-.row-cols-1 > * {
-  flex: 0 0 auto;
-  width: 100%;
-}
-
-.row-cols-2 > * {
-  flex: 0 0 auto;
-  width: 50%;
-}
-
-.row-cols-3 > * {
-  flex: 0 0 auto;
-  width: 33.3333333333%;
-}
-
-.row-cols-4 > * {
-  flex: 0 0 auto;
-  width: 25%;
-}
-
-.row-cols-5 > * {
-  flex: 0 0 auto;
-  width: 20%;
-}
-
-.row-cols-6 > * {
-  flex: 0 0 auto;
-  width: 16.6666666667%;
-}
-
-.col-1 {
-  flex: 0 0 auto;
-  width: 8.3333333333%;
-}
-
-.col-2 {
-  flex: 0 0 auto;
-  width: 16.6666666667%;
-}
-
-.col-3 {
-  flex: 0 0 auto;
-  width: 25%;
-}
-
-.col-4 {
-  flex: 0 0 auto;
-  width: 33.3333333333%;
-}
-
-.col-5 {
-  flex: 0 0 auto;
-  width: 41.6666666667%;
-}
-
-.col-6 {
-  flex: 0 0 auto;
-  width: 50%;
-}
-
-.col-7 {
-  flex: 0 0 auto;
-  width: 58.3333333333%;
-}
-
-.col-8 {
-  flex: 0 0 auto;
-  width: 66.6666666667%;
-}
-
-.col-9 {
-  flex: 0 0 auto;
-  width: 75%;
-}
-
-.col-10 {
-  flex: 0 0 auto;
-  width: 83.3333333333%;
-}
-
-.col-11 {
-  flex: 0 0 auto;
-  width: 91.6666666667%;
-}
-
-.col-12 {
-  flex: 0 0 auto;
-  width: 100%;
-}
-
-.offset-0 {
-  margin-left: 0;
-}
-
-.offset-1 {
-  margin-left: 8.3333333333%;
-}
-
-.offset-2 {
-  margin-left: 16.6666666667%;
-}
-
-.offset-3 {
-  margin-left: 25%;
-}
-
-.offset-4 {
-  margin-left: 33.3333333333%;
-}
-
-.offset-5 {
-  margin-left: 41.6666666667%;
-}
-
-.offset-6 {
-  margin-left: 50%;
-}
-
-.offset-7 {
-  margin-left: 58.3333333333%;
-}
-
-.offset-8 {
-  margin-left: 66.6666666667%;
-}
-
-.offset-9 {
-  margin-left: 75%;
-}
-
-.offset-10 {
-  margin-left: 83.3333333333%;
-}
-
-.offset-11 {
-  margin-left: 91.6666666667%;
-}
-
-.g-0,
-.gx-0 {
-  --grid-gutter-x: 0px;
-}
-
-.g-0,
-.gy-0 {
-  --grid-gutter-y: 0px;
-}
-
-.g-1,
-.gx-1 {
-  --grid-gutter-x: 12.5px;
-}
-
-.g-1,
-.gy-1 {
-  --grid-gutter-y: 12.5px;
-}
-
-.g-2,
-.gx-2 {
-  --grid-gutter-x: 25px;
-}
-
-.g-2,
-.gy-2 {
-  --grid-gutter-y: 25px;
-}
-
-.g-3,
-.gx-3 {
-  --grid-gutter-x: 50px;
-}
-
-.g-3,
-.gy-3 {
-  --grid-gutter-y: 50px;
-}
-
-.g-4,
-.gx-4 {
-  --grid-gutter-x: 75px;
-}
-
-.g-4,
-.gy-4 {
-  --grid-gutter-y: 75px;
-}
-
-.g-5,
-.gx-5 {
-  --grid-gutter-x: 150px;
-}
-
-.g-5,
-.gy-5 {
-  --grid-gutter-y: 150px;
 }
 
 @media (min-width: 576px) {
@@ -1188,13 +1011,16 @@ button {
     --grid-gutter-y: 150px;
   }
 }
+.top-act__btn, .top-act__group, .top-act, .navbar__link, .navbar__list, .top-bar {
+  display: flex;
+  align-items: center;
+}
+
 .header {
   background: #eeeeee;
 }
 
 .top-bar {
-  display: flex;
-  align-items: center;
   padding: 3rem;
 }
 
@@ -1203,16 +1029,12 @@ button {
   margin-right: auto;
 }
 .navbar__list {
-  display: flex;
-  align-items: center;
   gap: 3rem;
 }
 .navbar__link {
   font-size: 1.5rem;
   font-weight: 500;
   line-height: 2.2rem; /* 146.667% */
-  display: flex;
-  align-items: center;
   gap: 0.6rem;
 }
 .navbar__arrow {
@@ -1220,13 +1042,9 @@ button {
 }
 
 .top-act {
-  display: flex;
-  align-items: center;
   gap: 2rem;
 }
 .top-act__group {
-  display: flex;
-  align-items: center;
   min-width: 5rem;
   height: 5rem;
   border-radius: 0.8rem;
@@ -1238,9 +1056,8 @@ button {
 }
 .top-act__btn {
   padding: 1.3rem 2rem;
-  display: flex;
-  align-items: center;
   gap: 1rem;
+  cursor: pointer;
 }
 .top-act__title {
   font-size: 1.5rem;
@@ -1259,6 +1076,7 @@ button {
   height: 5rem;
   border-radius: 0.8rem;
   box-shadow: 0px 4px 14px 2px rgba(0, 0, 0, 0.08);
+  cursor: pointer;
 }
 
 .logo {
