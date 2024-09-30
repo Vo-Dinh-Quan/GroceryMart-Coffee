@@ -1,0 +1,12 @@
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 1.4rem;
+
+    &__title {
+        font-size: 2.2rem;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 1.45; /* 145.455% */
+    }
+}
