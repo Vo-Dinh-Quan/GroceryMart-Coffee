@@ -1,6 +1,4 @@
 # GroceryMart-Coffee
-Start your business journey by opening a small grocery store.
-
 <img src="Thumbnail.png" alt="Project Thumbnail" width="100%"/>
 
 **GroceryMart-Coffee** is an eCommerce platform focused on offering a wide range of grocery products, specifically high-quality coffee. With a modern design, user-friendly interface, and smooth user experience, GroceryMart-Coffee allows customers to easily browse, select, and purchase coffee products from the comfort of their homes.
