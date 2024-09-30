@@ -1,3 +1,5 @@
+@use "../abstracts";
+
 %flexItemsCenter {
     display: flex;
     align-items: center;
@@ -9,12 +11,38 @@
 
 .top-bar {
     @extend %flexItemsCenter;
-    padding: 3rem;
+    padding: 3rem 0;
+
+    @include abstracts.breakpoint(lg) { // responsive cho tablet
+        padding: 2rem 0;
+    }
+
+    @include abstracts.breakpoint(sm) { // responsive cho mobile
+        padding: 1.6rem 0;
+    }
+
+
+    &__more {
+        display: none;
+
+        @include abstracts.breakpoint(lg) { // responsive cho tablet
+            display: block;
+        }
+    }
 }
 
 .navbar {
     margin-left: 14.4rem;
-    margin-right: auto; // đẩy actions về bên phải
+
+    @include abstracts.breakpoint(xl) { // responsive cho tablet
+        margin-left: 5rem; // đẩy là độ phân giải màn hình lớn nhưng ở khoảng < 1200
+        // căn navbar lại bằng cách giảm margin-left
+        // tương tự nó củng sẽ bị dính với đoạn md, => ẩn luôn cái top-act__group từ đoạn md
+    }
+    
+    @include abstracts.breakpoint(lg) { // responsive cho tablet
+        display: none;
+    }
 
     &__list {
         @extend %flexItemsCenter;
@@ -37,6 +65,7 @@
 .top-act {
     @extend %flexItemsCenter;
     gap: 2rem;
+    margin-left: auto;
 
     &__group {
         @extend %flexItemsCenter;
@@ -48,11 +77,23 @@
         box-shadow: 0px 20px 60px 10px rgba(237, 237, 246, 0.2);
         background: var(--top-act-group-bg-color);
         box-shadow: 0px 20px 60px 10px var(--top-act-group-shadow);
+
+        @include abstracts.breakpoint(md) { // responsive cho mobile
+            // đáng ra là sm nhưng nó đã bị dính từ đoạn md nên ta ẩn luôn từ đoạn md
+            display: none;
+        }
+    }
+
+    &__group--single { // responsive cho tablet
+        @include abstracts.breakpoint(lg) {
+            display: none;
+        }
     }
 
     &__group--single &__btn {
-        padding: 1.3rem; // áp dụng riêng cho  khối btn bên trái
+        padding: 1.3rem; // áp dụng riêng cho khối btn bên trái
     }
+
 
     &__btn {
         padding: 1.3rem 2rem; // để nó áp dụng cả 2 khối btn bên trái và btn bên phải

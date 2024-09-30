@@ -1007,8 +1007,7 @@ select {
 }
 html.dark {
   --text-color: #fff;
-  --icon-color: brightness(0) saturate(100%) invert(100%) sepia(0%)
-      saturate(7482%) hue-rotate(72deg) brightness(99%) contrast(99%);
+  --icon-color: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(0%) hue-rotate(317deg) brightness(103%) contrast(102%);
   --header-bg-color: #171c28;
   --top-act-group-bg-color: #292e39;
   --top-act-group-shadow: rgba(0, 0, 0, 0.2);
@@ -1035,12 +1034,39 @@ html {
 }
 
 .top-bar {
-  padding: 3rem;
+  padding: 3rem 0;
+}
+@media (max-width: 991.98px) {
+  .top-bar {
+    padding: 2rem 0;
+  }
+}
+@media (max-width: 575.98px) {
+  .top-bar {
+    padding: 1.6rem 0;
+  }
+}
+.top-bar__more {
+  display: none;
+}
+@media (max-width: 991.98px) {
+  .top-bar__more {
+    display: block;
+  }
 }
 
 .navbar {
   margin-left: 14.4rem;
-  margin-right: auto;
+}
+@media (max-width: 1199.98px) {
+  .navbar {
+    margin-left: 5rem;
+  }
+}
+@media (max-width: 991.98px) {
+  .navbar {
+    display: none;
+  }
 }
 .navbar__list {
   gap: 3rem;
@@ -1057,6 +1083,7 @@ html {
 
 .top-act {
   gap: 2rem;
+  margin-left: auto;
 }
 .top-act__group {
   min-width: 5rem;
@@ -1066,6 +1093,16 @@ html {
   box-shadow: 0px 20px 60px 10px rgba(237, 237, 246, 0.2);
   background: var(--top-act-group-bg-color);
   box-shadow: 0px 20px 60px 10px var(--top-act-group-shadow);
+}
+@media (max-width: 767.98px) {
+  .top-act__group {
+    display: none;
+  }
+}
+@media (max-width: 991.98px) {
+  .top-act__group--single {
+    display: none;
+  }
 }
 .top-act__group--single .top-act__btn {
   padding: 1.3rem;
@@ -1100,11 +1137,27 @@ html {
   align-items: center;
   gap: 1.4rem;
 }
+@media (max-width: 991.98px) {
+  .logo {
+    gap: 1rem;
+    margin-left: 3.9rem;
+  }
+}
 .logo__title {
   font-size: 2.2rem;
   font-style: normal;
   font-weight: 700;
   line-height: 1.45; /* 145.455% */
+}
+@media (max-width: 991.98px) {
+  .logo__title {
+    font-size: 1.8rem;
+  }
+}
+@media (max-width: 991.98px) {
+  .logo__img {
+    width: 2.4rem;
+  }
 }
 
 /*# sourceMappingURL=main.css.map */
