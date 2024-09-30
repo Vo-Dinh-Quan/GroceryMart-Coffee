@@ -10,6 +10,10 @@
         margin-left: 3.9rem;
     }
 
+    @include abstracts.breakpoint(sm) {
+        margin-left: 0;
+    }
+
     &__title {
         font-size: 2.2rem;
         font-style: normal;

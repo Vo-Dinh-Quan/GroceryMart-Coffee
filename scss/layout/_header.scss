@@ -18,6 +18,7 @@
     }
 
     @include abstracts.breakpoint(sm) { // responsive cho mobile
+        justify-content: space-between; // căn giữa cái logo áp dụng cho mobile
         padding: 1.6rem 0;
     }
 
@@ -66,6 +67,11 @@
     @extend %flexItemsCenter;
     gap: 2rem;
     margin-left: auto;
+
+    @include abstracts.breakpoint(sm) { // cái justify-content mà chúng ta căn giữa không hoạt động vì thằng top-act này để margin-left: auto
+        // tắt cái margin nó đi thì tự cái space between nó đẩy ra
+        margin-left: 0;
+    }
 
     &__group {
         @extend %flexItemsCenter;
