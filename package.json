@@ -1,0 +1,13 @@
+{
+    "name": "grocery-ecommerce",
+    "version": "1.0.0",
+    "description": "Start your business journey by opening a small grocery store.",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "sass": "sass scss:assets/css -w"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC"
+}
