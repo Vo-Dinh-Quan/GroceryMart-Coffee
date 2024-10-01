@@ -11,22 +11,25 @@
 
 .top-bar {
     @extend %flexItemsCenter;
+    position: relative; // định vị để làm mega menu
     padding: 3rem 0;
 
-    @include abstracts.breakpoint(lg) { // responsive cho tablet
+    @include abstracts.breakpoint(lg) {
+        // responsive cho tablet
         padding: 2rem 0;
     }
 
-    @include abstracts.breakpoint(sm) { // responsive cho mobile
+    @include abstracts.breakpoint(sm) {
+        // responsive cho mobile
         justify-content: space-between; // căn giữa cái logo áp dụng cho mobile
         padding: 1.6rem 0;
     }
 
-
     &__more {
         display: none;
 
-        @include abstracts.breakpoint(lg) { // responsive cho tablet
+        @include abstracts.breakpoint(lg) {
+            // responsive cho tablet
             display: block;
         }
     }
@@ -35,23 +38,27 @@
 .navbar {
     margin-left: 14.4rem;
 
-    @include abstracts.breakpoint(xl) { // responsive cho tablet
+    @include abstracts.breakpoint(xl) {
+        // responsive cho tablet
         margin-left: 5rem; // đẩy là độ phân giải màn hình lớn nhưng ở khoảng < 1200
         // căn navbar lại bằng cách giảm margin-left
         // tương tự nó củng sẽ bị dính với đoạn md, => ẩn luôn cái top-act__group từ đoạn md
     }
-    
-    @include abstracts.breakpoint(lg) { // responsive cho tablet
+
+    @include abstracts.breakpoint(lg) {
+        // responsive cho tablet
         display: none;
     }
 
     &__list {
         @extend %flexItemsCenter;
-        gap: 3rem;
+        // gap: 3rem;
     }
 
     &__link {
         font-size: 1.5rem;
+        padding: 0 1.5rem;
+        height: 5rem;
         font-weight: 500;
         line-height: 2.2rem; /* 146.667% */
         @extend %flexItemsCenter;
@@ -61,6 +68,23 @@
     &__arrow {
         margin-top: 0.4rem;
     }
+
+    &__item {
+        // Thẻ a nằm trong li đầu tiên sẽ không có padding left
+        &:first-child a {
+            padding-left: 0;
+        }
+        // Thẻ a nằm trong li cuối cùng sẽ không có padding right
+        &:last-child {
+            padding-right: 0;
+        }
+
+        &:hover .dropdown {
+            opacity: 1;
+            visibility: visible;
+            scale: 1;
+        }
+    }
 }
 
 .top-act {
@@ -68,7 +92,8 @@
     gap: 2rem;
     margin-left: auto;
 
-    @include abstracts.breakpoint(sm) { // cái justify-content mà chúng ta căn giữa không hoạt động vì thằng top-act này để margin-left: auto
+    @include abstracts.breakpoint(sm) {
+        // cái justify-content mà chúng ta căn giữa không hoạt động vì thằng top-act này để margin-left: auto
         // tắt cái margin nó đi thì tự cái space between nó đẩy ra
         margin-left: 0;
     }
@@ -84,13 +109,15 @@
         background: var(--top-act-group-bg-color);
         box-shadow: 0px 20px 60px 10px var(--top-act-group-shadow);
 
-        @include abstracts.breakpoint(md) { // responsive cho mobile
+        @include abstracts.breakpoint(md) {
+            // responsive cho mobile
             // đáng ra là sm nhưng nó đã bị dính từ đoạn md nên ta ẩn luôn từ đoạn md
             display: none;
         }
     }
 
-    &__group--single { // responsive cho tablet
+    &__group--single {
+        // responsive cho tablet
         @include abstracts.breakpoint(lg) {
             display: none;
         }
@@ -99,7 +126,6 @@
     &__group--single &__btn {
         padding: 1.3rem; // áp dụng riêng cho khối btn bên trái
     }
-
 
     &__btn {
         padding: 1.3rem 2rem; // để nó áp dụng cả 2 khối btn bên trái và btn bên phải

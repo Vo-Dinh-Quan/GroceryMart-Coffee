@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
    License: none (public domain)
@@ -1008,12 +1009,17 @@ select {
 }
 html.dark {
   --text-color: #fff;
-  --icon-color: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(0%) hue-rotate(317deg) brightness(103%) contrast(102%);
-  --body-bg: #292E39;
+  --icon-color: brightness(0) saturate(100%) invert(100%) sepia(0%)
+      saturate(7482%) hue-rotate(72deg) brightness(99%) contrast(99%);
+  --body-bg: #292e39;
   --header-bg-color: #171c28;
   --top-act-group-bg-color: #292e39;
   --top-act-group-shadow: rgba(0, 0, 0, 0.2);
   --top-act-group-separate: #ededf6;
+  --dropdown-bg-color: #2f3441;
+  --dropdown-shadow-color: rgba(23, 28, 40, 0.4);
+  --dropdown-arrow-color: brightness(0) saturate(100%) invert(17%) sepia(27%)
+      saturate(487%) hue-rotate(185deg) brightness(89%) contrast(88%);
 }
 
 html {
@@ -1025,6 +1031,8 @@ html {
   --top-act-group-bg-color: #fff;
   --top-act-group-shadow: rgba(237, 237, 246, 0.2);
   --top-act-group-separate: #ededf6;
+  --dropdown-bg-color: #fff;
+  --dropdown-shadow-color: rgba(200, 200, 200, 0.4);
 }
 @media (max-width: 991.98px) {
   html {
@@ -1042,6 +1050,7 @@ html {
 }
 
 .top-bar {
+  position: relative;
   padding: 3rem 0;
 }
 @media (max-width: 991.98px) {
@@ -1077,17 +1086,27 @@ html {
     display: none;
   }
 }
-.navbar__list {
-  gap: 3rem;
-}
 .navbar__link {
   font-size: 1.5rem;
+  padding: 0 1.5rem;
+  height: 5rem;
   font-weight: 500;
   line-height: 2.2rem; /* 146.667% */
   gap: 0.6rem;
 }
 .navbar__arrow {
   margin-top: 0.4rem;
+}
+.navbar__item:first-child a {
+  padding-left: 0;
+}
+.navbar__item:last-child {
+  padding-right: 0;
+}
+.navbar__item:hover .dropdown {
+  opacity: 1;
+  visibility: visible;
+  scale: 1;
 }
 
 .top-act {
@@ -1177,6 +1196,48 @@ html {
   .logo__img {
     width: 2.4rem;
   }
+}
+
+.dropdown {
+  position: absolute;
+  left: 0;
+  padding-top: 5.4rem;
+  scale: 0;
+  /* mặc định thuộc tính transform-origin: nó là center;. chúng ta có thể chỉnh lại theo top right */
+  /* Hoặc đặt theo tọa độ, tính bằng %, góc tọa độ sẽ là góc trên bên trái */
+  /* ở đây chúng ta tính từ góc tọa độ, x dài ra 95% so với tổng, y giữ cố định ở tâm */
+  transform-origin: 50% 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.5s, visibility 0.5s, scale 0.3s;
+}
+.dropdown__inner {
+  position: relative;
+  padding: 3rem;
+  border-radius: 2rem;
+  background: var(--dropdown-bg-color);
+  box-shadow: 0px 40px 90px 20px var(--dropdown-shadow-color);
+}
+.dropdown__inner::before {
+  content: url("../icons/dropdown-arrow.svg");
+  position: absolute;
+  top: -1.3rem;
+  left: var(--arrow-left-pos);
+  translate: -50%;
+  filter: var(--dropdown-arrow-color);
+}
+
+/* Hiệu ứng hover với transform-origin khác nhau cho mỗi dropdown */
+.dropdown--departments {
+  transform-origin: 37.7rem 0; /* Thay đổi cho dropdown Departments */
+}
+
+.dropdown--grocery {
+  transform-origin: 50rem 0; /* Thay đổi cho dropdown Grocery */
+}
+
+.dropdown--beauty {
+  transform-origin: 60rem 0; /* Thay đổi cho dropdown Beauty */
 }
 
 /*# sourceMappingURL=main.css.map */
