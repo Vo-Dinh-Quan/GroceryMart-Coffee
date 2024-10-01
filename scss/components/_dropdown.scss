@@ -2,17 +2,19 @@
     position: absolute;
     left: 0;
     padding-top: 5.4rem;
+    width: min(124rem, 100%);
 
-    scale: 0;
     /* mặc định thuộc tính transform-origin: nó là center;. chúng ta có thể chỉnh lại theo top right */
     /* Hoặc đặt theo tọa độ, tính bằng %, góc tọa độ sẽ là góc trên bên trái */
     /* ở đây chúng ta tính từ góc tọa độ, x dài ra 95% so với tổng, y giữ cố định ở tâm */
-    transform-origin: 50% 0;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.5s, visibility 0.5s, scale 0.3s;
-    
+    // scale: 0;
+    // transform-origin: 50% 0;
+    // opacity: 0;
+    // visibility: hidden;
+    // transition: opacity 0.5s, visibility 0.5s, scale 0.3s;
+
     &__inner {
+        max-height: min(58.2rem, 100vh - 15.8rem);
         position: relative;
         padding: 3rem;
         border-radius: 2rem;
@@ -36,10 +38,71 @@
 }
 
 .dropdown--grocery {
-
     transform-origin: 50rem 0; /* Thay đổi cho dropdown Grocery */
 }
 
 .dropdown--beauty {
     transform-origin: 60rem 0; /* Thay đổi cho dropdown Beauty */
+}
+
+.top-menu {
+    height: 100%;
+
+    &__main {
+        height: 100%;
+        width: 29.2rem; // 262px + 30px
+        border-right: 1px solid var(--top-menu-border-color);
+    }
+}
+
+.menu-column {
+    display: flex;
+    gap: 1.4rem;
+
+    &__icon {
+        position: relative;
+        flex-shrink: 0; // không cho méo lại nếu các nội dung các vượt quá kích thước đè lên
+        width: 3.6rem;
+        height: 3.6rem;
+    }
+
+    &__content {
+        flex-grow: 1;
+    }
+    &__icon-1 {
+        width: 3rem;
+        height: 3rem;
+        object-fit: cover;
+    }
+    &__icon-2 {
+        width: 2.4rem;
+        height: 2.4rem;
+        object-fit: cover;
+        position: absolute;
+        right: 0;
+        bottom: 0;
+    }
+
+    &__heading {
+        margin-top: 0.4rem;
+        font-size: 1.6rem;
+        font-weight: 500;
+        line-height: 2.4rem; /* 150% */
+    }
+
+    &__list {
+        margin-top: 1.9rem; // 26px - 7px
+    }
+
+    &__link {
+        padding: .7rem 0;
+        display: block;
+        font-size: 1.4rem;
+        font-weight: 400;
+        line-height: 2rem; /* 142.857% */
+        &:hover {
+            color: #0071DC;
+            font-weight: 500;
+        }
+    }
 }

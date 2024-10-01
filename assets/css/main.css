@@ -1020,6 +1020,7 @@ html.dark {
   --dropdown-shadow-color: rgba(23, 28, 40, 0.4);
   --dropdown-arrow-color: brightness(0) saturate(100%) invert(17%) sepia(27%)
       saturate(487%) hue-rotate(185deg) brightness(89%) contrast(88%);
+  --top-menu-border-color: #171C28;
 }
 
 html {
@@ -1033,6 +1034,7 @@ html {
   --top-act-group-separate: #ededf6;
   --dropdown-bg-color: #fff;
   --dropdown-shadow-color: rgba(200, 200, 200, 0.4);
+  --top-menu-border-color: #D2D1D6;
 }
 @media (max-width: 991.98px) {
   html {
@@ -1202,16 +1204,13 @@ html {
   position: absolute;
   left: 0;
   padding-top: 5.4rem;
-  scale: 0;
+  width: min(124rem, 100%);
   /* mặc định thuộc tính transform-origin: nó là center;. chúng ta có thể chỉnh lại theo top right */
   /* Hoặc đặt theo tọa độ, tính bằng %, góc tọa độ sẽ là góc trên bên trái */
   /* ở đây chúng ta tính từ góc tọa độ, x dài ra 95% so với tổng, y giữ cố định ở tâm */
-  transform-origin: 50% 0;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.5s, visibility 0.5s, scale 0.3s;
 }
 .dropdown__inner {
+  max-height: min(58.2rem, 100vh - 15.8rem);
   position: relative;
   padding: 3rem;
   border-radius: 2rem;
@@ -1238,6 +1237,62 @@ html {
 
 .dropdown--beauty {
   transform-origin: 60rem 0; /* Thay đổi cho dropdown Beauty */
+}
+
+.top-menu {
+  height: 100%;
+}
+.top-menu__main {
+  height: 100%;
+  width: 29.2rem;
+  border-right: 1px solid var(--top-menu-border-color);
+}
+
+.menu-column {
+  display: flex;
+  gap: 1.4rem;
+}
+.menu-column__icon {
+  position: relative;
+  flex-shrink: 0;
+  width: 3.6rem;
+  height: 3.6rem;
+}
+.menu-column__content {
+  flex-grow: 1;
+}
+.menu-column__icon-1 {
+  width: 3rem;
+  height: 3rem;
+  object-fit: cover;
+}
+.menu-column__icon-2 {
+  width: 2.4rem;
+  height: 2.4rem;
+  object-fit: cover;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+.menu-column__heading {
+  margin-top: 0.4rem;
+  font-size: 1.6rem;
+  font-weight: 500;
+  line-height: 2.4rem; /* 150% */
+}
+.menu-column__list {
+  margin-top: 1.9rem;
+}
+.menu-column__link {
+  padding: 0.7rem 0;
+  display: block;
+  font-size: 1.4rem;
+  font-weight: 400;
+  line-height: 2rem; /* 142.857% */
+}
+.menu-column__link:hover {
+  color: #0071DC;
+  font-weight: 500;
 }
 
 /*# sourceMappingURL=main.css.map */
