@@ -7,6 +7,10 @@
 
 .header {
     background: var(--header-bg-color);
+
+    @include abstracts.breakpoint(lg) {
+        box-shadow: 0px 20px 60px 10px var(--header-shadow-color);
+    }
 }
 
 .top-bar {
@@ -19,7 +23,7 @@
         padding: 2rem 0;
     }
 
-    @include abstracts.breakpoint(sm) {
+    @include abstracts.breakpoint(md) {
         // responsive cho mobile
         justify-content: space-between; // căn giữa cái logo áp dụng cho mobile
         padding: 1.6rem 0;
@@ -36,11 +40,11 @@
 }
 
 .navbar {
-    margin-left: 14.4rem;
+    margin-left: 12.9rem; // đáng ra là 14.4rem nhưng trừ đi 1.5rem padding của cái navbar link
 
     @include abstracts.breakpoint(xl) {
         // responsive cho tablet
-        margin-left: 5rem; // đẩy là độ phân giải màn hình lớn nhưng ở khoảng < 1200
+        margin-left: 2.8rem; // đẩy là độ phân giải màn hình lớn nhưng ở khoảng < 1200
         // căn navbar lại bằng cách giảm margin-left
         // tương tự nó củng sẽ bị dính với đoạn md, => ẩn luôn cái top-act__group từ đoạn md
     }
@@ -70,14 +74,6 @@
     }
 
     &__item {
-        // Thẻ a nằm trong li đầu tiên sẽ không có padding left
-        &:first-child a {
-            padding-left: 0;
-        }
-        // Thẻ a nằm trong li cuối cùng sẽ không có padding right
-        &:last-child {
-            padding-right: 0;
-        }
 
         &:hover .dropdown {
             opacity: 1;
@@ -92,7 +88,7 @@
     gap: 2rem;
     margin-left: auto;
 
-    @include abstracts.breakpoint(sm) {
+    @include abstracts.breakpoint(md) {
         // cái justify-content mà chúng ta căn giữa không hoạt động vì thằng top-act này để margin-left: auto
         // tắt cái margin nó đi thì tự cái space between nó đẩy ra
         margin-left: 0;

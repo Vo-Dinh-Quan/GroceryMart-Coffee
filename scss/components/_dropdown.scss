@@ -7,16 +7,19 @@
     /* mặc định thuộc tính transform-origin: nó là center;. chúng ta có thể chỉnh lại theo top right */
     /* Hoặc đặt theo tọa độ, tính bằng %, góc tọa độ sẽ là góc trên bên trái */
     /* ở đây chúng ta tính từ góc tọa độ, x dài ra 95% so với tổng, y giữ cố định ở tâm */
-    // scale: 0;
-    // transform-origin: 50% 0;
-    // opacity: 0;
-    // visibility: hidden;
-    // transition: opacity 0.5s, visibility 0.5s, scale 0.3s;
+    scale: 0;
+    transform-origin: 50% 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s, visibility 0.5s, scale 0.3s;
 
     &__inner {
-        max-height: min(58.2rem, 100vh - 15.8rem);
+        --inner-max-height: min(58.2rem, 100vh - 15.8rem);
+        --inner-padding: 3rem;
         position: relative;
-        padding: 3rem;
+
+        max-height: var(--inner-max-height); // 158px = 110px - 24px -24px
+        padding: var(--inner-padding);
         border-radius: 2rem;
         background: var(--dropdown-bg-color);
         box-shadow: 0px 40px 90px 20px var(--dropdown-shadow-color);
@@ -46,12 +49,14 @@
 }
 
 .top-menu {
-    height: 100%;
+    max-height: calc(var(--inner-max-height) - var(--inner-padding) * 2); // lấy chiều cao theo dropdown__inner nhưng trừ đi cái padding của nó 
 
     &__main {
-        height: 100%;
+        max-height: inherit;
         width: 29.2rem; // 262px + 30px
         border-right: 1px solid var(--top-menu-border-color);
+        overflow-y: auto;
+        // chú thích ở đây: height của nó phải có số tuyệt đối thì nó mới hiện thanh cuộn, => bỏ đi height100%
     }
 }
 
@@ -67,7 +72,7 @@
     }
 
     &__content {
-        flex-grow: 1;
+        flex: 1;
     }
     &__icon-1 {
         width: 3rem;
@@ -81,13 +86,14 @@
         position: absolute;
         right: 0;
         bottom: 0;
+        filter: var(--menu-column-icon-color);
     }
 
     &__heading {
         margin-top: 0.4rem;
         font-size: 1.6rem;
         font-weight: 500;
-        line-height: 2.4rem; /* 150% */
+        line-height: 150%; /* 150% */
     }
 
     &__list {
@@ -95,11 +101,10 @@
     }
 
     &__link {
-        padding: .7rem 0;
         display: block;
+        padding: 0.7rem 0;
         font-size: 1.4rem;
-        font-weight: 400;
-        line-height: 2rem; /* 142.857% */
+        line-height: 142.857%; /* 142.857% */
         &:hover {
             color: #0071DC;
             font-weight: 500;

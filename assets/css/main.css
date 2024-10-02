@@ -1021,6 +1021,12 @@ html.dark {
   --dropdown-arrow-color: brightness(0) saturate(100%) invert(17%) sepia(27%)
       saturate(487%) hue-rotate(185deg) brightness(89%) contrast(88%);
   --top-menu-border-color: #171C28;
+  --menu-column-icon-color: brightness(0) saturate(100%) invert(100%) sepia(10%) saturate(1311%) hue-rotate(181deg) brightness(100%) contrast(97%);
+}
+@media (max-width: 991.98px) {
+  html.dark {
+    --header-shadow-color: rgba(0, 0, 0, 0.20);
+  }
 }
 
 html {
@@ -1039,6 +1045,7 @@ html {
 @media (max-width: 991.98px) {
   html {
     --header-bg-color: #fff;
+    --header-shadow-color: rgba(237, 237, 246, 0.2);
   }
 }
 
@@ -1050,6 +1057,11 @@ html {
 .header {
   background: var(--header-bg-color);
 }
+@media (max-width: 991.98px) {
+  .header {
+    box-shadow: 0px 20px 60px 10px var(--header-shadow-color);
+  }
+}
 
 .top-bar {
   position: relative;
@@ -1060,7 +1072,7 @@ html {
     padding: 2rem 0;
   }
 }
-@media (max-width: 575.98px) {
+@media (max-width: 767.98px) {
   .top-bar {
     justify-content: space-between;
     padding: 1.6rem 0;
@@ -1076,11 +1088,11 @@ html {
 }
 
 .navbar {
-  margin-left: 14.4rem;
+  margin-left: 12.9rem;
 }
 @media (max-width: 1199.98px) {
   .navbar {
-    margin-left: 5rem;
+    margin-left: 2.8rem;
   }
 }
 @media (max-width: 991.98px) {
@@ -1099,12 +1111,6 @@ html {
 .navbar__arrow {
   margin-top: 0.4rem;
 }
-.navbar__item:first-child a {
-  padding-left: 0;
-}
-.navbar__item:last-child {
-  padding-right: 0;
-}
 .navbar__item:hover .dropdown {
   opacity: 1;
   visibility: visible;
@@ -1115,7 +1121,7 @@ html {
   gap: 2rem;
   margin-left: auto;
 }
-@media (max-width: 575.98px) {
+@media (max-width: 767.98px) {
   .top-act {
     margin-left: 0;
   }
@@ -1178,7 +1184,7 @@ html {
     margin-left: 3.9rem;
   }
 }
-@media (max-width: 575.98px) {
+@media (max-width: 767.98px) {
   .logo {
     margin-left: 0;
   }
@@ -1208,11 +1214,18 @@ html {
   /* mặc định thuộc tính transform-origin: nó là center;. chúng ta có thể chỉnh lại theo top right */
   /* Hoặc đặt theo tọa độ, tính bằng %, góc tọa độ sẽ là góc trên bên trái */
   /* ở đây chúng ta tính từ góc tọa độ, x dài ra 95% so với tổng, y giữ cố định ở tâm */
+  scale: 0;
+  transform-origin: 50% 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.5s, visibility 0.5s, scale 0.3s;
 }
 .dropdown__inner {
-  max-height: min(58.2rem, 100vh - 15.8rem);
+  --inner-max-height: min(58.2rem, 100vh - 15.8rem);
+  --inner-padding: 3rem;
   position: relative;
-  padding: 3rem;
+  max-height: var(--inner-max-height);
+  padding: var(--inner-padding);
   border-radius: 2rem;
   background: var(--dropdown-bg-color);
   box-shadow: 0px 40px 90px 20px var(--dropdown-shadow-color);
@@ -1240,12 +1253,13 @@ html {
 }
 
 .top-menu {
-  height: 100%;
+  max-height: calc(var(--inner-max-height) - var(--inner-padding) * 2);
 }
 .top-menu__main {
-  height: 100%;
+  max-height: inherit;
   width: 29.2rem;
   border-right: 1px solid var(--top-menu-border-color);
+  overflow-y: auto;
 }
 
 .menu-column {
@@ -1259,7 +1273,7 @@ html {
   height: 3.6rem;
 }
 .menu-column__content {
-  flex-grow: 1;
+  flex: 1;
 }
 .menu-column__icon-1 {
   width: 3rem;
@@ -1273,22 +1287,22 @@ html {
   position: absolute;
   right: 0;
   bottom: 0;
+  filter: var(--menu-column-icon-color);
 }
 .menu-column__heading {
   margin-top: 0.4rem;
   font-size: 1.6rem;
   font-weight: 500;
-  line-height: 2.4rem; /* 150% */
+  line-height: 150%; /* 150% */
 }
 .menu-column__list {
   margin-top: 1.9rem;
 }
 .menu-column__link {
-  padding: 0.7rem 0;
   display: block;
+  padding: 0.7rem 0;
   font-size: 1.4rem;
-  font-weight: 400;
-  line-height: 2rem; /* 142.857% */
+  line-height: 142.857%; /* 142.857% */
 }
 .menu-column__link:hover {
   color: #0071DC;
