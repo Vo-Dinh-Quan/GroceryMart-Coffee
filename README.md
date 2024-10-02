@@ -8,6 +8,10 @@
    ```bash
    git clone https://github.com/Vo-Dinh-Quan/GroceryMart-Coffee.git
    ```
-
 2. Open the application:
    - Open the `index.html` file in your browser to start exploring the application.
+  
+> **Current progress**: 5% complete
+> <div style="display: flex, align-item: center">
+>   <img src="https://media.giphy.com/media/uCDT9P4pDdpgPDrdAg/giphy.gif" alt="Sticker GIF" width="30" height="30"/>
+> </div>
